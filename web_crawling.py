@@ -11,7 +11,7 @@ movieId_column = df['movieId']
 
 main_url = "https://imdb.com"
 
-for i in range(71, 105):
+for i in range(6494, 9742):
     print(movieId_column[i], title_column[i],  "ongoing...")
     movie_name = title_column[i]
 
@@ -43,6 +43,9 @@ for i in range(71, 105):
     except AttributeError:
         print(f"Warning: Text not found for movie {movie_name}")
         info = "Not available"
+    except ConnectionResetError:
+        printf("connection lost; maybe blocked from server by admin")
+        break
 
     data['movieId'].append(movieId_column[i])
     data['director'].append(info)
